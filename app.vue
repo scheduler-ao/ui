@@ -2,9 +2,10 @@
 </script>
 
 <template>
-  <div>
-    <div class="p-4 float-right">
+  <NuxtLayout>
+    <FormsLayout>
+      <ProfileForm />
       <ThemeToggle />
-    </div>
-  </div>
+    </FormsLayout>
+  </NuxtLayout>
 </template>

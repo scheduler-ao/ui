@@ -3,9 +3,7 @@
 
 <template>
   <NuxtLayout>
-    <FormsLayout>
-      <ProfileForm />
-      <ThemeToggle />
-    </FormsLayout>
+    <ProfileForm />
+    <ThemeToggle />
   </NuxtLayout>
 </template>

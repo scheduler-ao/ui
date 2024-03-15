@@ -3,8 +3,8 @@
 
 <template>
   <div>
-    <div class="h-screen bg-slate-900 p-10 text-center">
-      <Button>Click me</Button>
+    <div class="p-4 float-right">
+      <ThemeToggle />
     </div>
   </div>
 </template>

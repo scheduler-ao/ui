@@ -1,46 +1,79 @@
 <script setup lang="ts">
-const onSubmit = (values: any) => {
-  console.log('submitting form', values);
+type Task = {
+  name?: string;
+  description?: string;
+  cronExpression?: string;
+  restData?: RestData;
 };
 
-const resetForm = () => {
-  console.log('resetting form');
+type RestData = {
+  url?: string;
+  method?: string;
+  body?: string;
 };
+
+const onSubmit = () => {
+  const task: Task = {
+    name: name.value,
+    description: description.value,
+    cronExpression: cronExpression.value,
+    restData: {
+      url: url.value,
+      method: method.value,
+      body: body.value,
+    },
+  };
+  $fetch("http://localhost:8080/api/v1/tasks", {
+    body: task,
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((response) => {
+    console.log("response : ", response);
+  });
+};
+const name = ref<string>();
+const description = ref<string>();
+const cronExpression = ref<string>();
+const url = ref<string>();
+const method = ref<string>();
+const body = ref<string>();
 </script>
 
 <template>
-  <div>
-    <h3 class="text-lg font-medium">
-      Profile
-    </h3>
+  <div class="flex flex-col gap-y-3 mb-8">
+    <h3 class="text-lg font-medium">Scheduler</h3>
     <p class="text-sm text-muted-foreground">
-      This is how others will see you on the site.
+      Build scheduler with your config.
     </p>
   </div>
-  <Separator />
-  <form class="space-y-8" @submit="onSubmit">
-    <FormField v-slot="{ componentField }" name="username">
-      <FormItem>
-        <FormLabel>Username</FormLabel>
-        <FormControl>
-          <Input type="text" placeholder="shadcn" v-bind="componentField" />
-        </FormControl>
-        <FormDescription>
-          This is your public display name. It can be your real name or a pseudonym. You can only change this once every
-          30 days.
-        </FormDescription>
-        <FormMessage />
-      </FormItem>
-    </FormField>
 
-    <div class="flex gap-2 justify-start">
-      <Button type="submit">
-        Update profile
-      </Button>
-
-      <Button type="button" variant="outline" @click="resetForm">
-        Reset form
-      </Button>
+  <div class="flex flex-col gap-y-5">
+    <div>
+      <Input type="text" placeholder="name" v-model="name" />
     </div>
-  </form>
+    <div>
+      <Input type="text" placeholder="description" v-model="description" />
+    </div>
+    <div>
+      <Input
+        type="text"
+        placeholder="cronExpression"
+        v-model="cronExpression"
+      />
+    </div>
+    <div>
+      <Input type="text" placeholder="url" v-model="url" />
+    </div>
+    <div>
+      <Input type="text" placeholder="method" v-model="method" />
+    </div>
+    <div>
+      <Input type="text" placeholder="body" v-model="body" />
+    </div>
+    <div>
+      <Button type="submit" @click="onSubmit"> Update profile </Button>
+    </div>
+  </div>
 </template>

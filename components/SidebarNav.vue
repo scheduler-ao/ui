@@ -1,41 +1,50 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 interface Item {
-  title: string
-  href: string
+  title: string;
+  href: string;
 }
 
 const sidebarNavItems: Item[] = [
   {
-    title: 'Profile',
-    href: '/examples/forms/forms',
+    title: "Account",
+    href: "/account",
   },
   {
-    title: 'Account',
-    href: '/examples/forms/account',
+    title: "Add Job",
+    href: "/add-job",
   },
   {
-    title: 'Appearance',
-    href: '/examples/forms/appearance',
+    title: "Jobs",
+    href: "/jobs",
   },
   {
-    title: 'Notifications',
-    href: '/examples/forms/notifications',
+    title: "Reports",
+    href: "/reports",
   },
   {
-    title: 'Display',
-    href: '/examples/forms/display',
+    title: "Notifications",
+    href: "/notifications",
   },
-]
+];
 </script>
 
 <template>
   <nav class="flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1">
-    <Button v-for="item in sidebarNavItems" :key="item.title" as="a" :href="item.href" variant="ghost" :class="cn(
-      'w-full text-left justify-start',
-      $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted',
-    )">
+    <Button
+      v-for="item in sidebarNavItems"
+      :key="item.title"
+      as="a"
+      :href="item.href"
+      variant="ghost"
+      :class="
+        cn(
+          'w-full text-left justify-start',
+          $route.path === `${item.href}.html` && 'bg-muted hover:bg-muted'
+        )
+      "
+    >
       {{ item.title }}
     </Button>
   </nav>

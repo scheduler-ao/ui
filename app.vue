@@ -1,9 +1,7 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <NuxtLayout>
-    <ProfileForm />
-    <ThemeToggle />
+    <NuxtPage />
   </NuxtLayout>
 </template>

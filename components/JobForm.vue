@@ -133,7 +133,7 @@ const headers = ref<Header[]>([
       </div>
     </div>
     <div>
-      <Button type="submit" @click="onSubmit"> Update profile </Button>
+      <Button type="submit" @click="onSubmit"> Save </Button>
     </div>
   </div>
 </template>

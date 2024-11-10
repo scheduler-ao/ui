@@ -1,3 +1,3 @@
 <script setup lang="ts"></script>
-<template><div>jobs</div></template>
+<template><JobList /></template>
 <style scoped></style>

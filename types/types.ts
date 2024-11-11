@@ -1,7 +1,9 @@
-// types.ts
-export interface Item {
+export interface Task {
   name: string;
-  cron: string;
+  cronExpression: string;
   description: string;
   status: string;
+}
+export interface TaskResponse {
+  tasks: Task[];
 }

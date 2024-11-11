@@ -10,14 +10,12 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import type { Item } from "~/types/types";
+import type { TaskResponse } from "~/types/types";
 
-const props = defineProps({
-  items: {
-    type: Array as PropType<Item[]>,
-    default: () => [],
-  },
-});
+const props = defineProps<{
+  taskResponse: TaskResponse;
+}>();
+
 const onSubmit = () => {
   console.log("submitted");
 };
@@ -36,13 +34,13 @@ const onSubmit = () => {
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow v-for="invoice in props.items" :key="invoice.name">
+      <TableRow v-for="task in props.taskResponse.tasks" :key="task.name">
         <TableCell class="font-medium">
-          {{ invoice.name }}
+          {{ task.name }}
         </TableCell>
-        <TableCell>{{ invoice.cron }}</TableCell>
-        <TableCell>{{ invoice.description }}</TableCell>
-        <TableCell> {{ invoice.status }}</TableCell>
+        <TableCell>{{ task.cronExpression }}</TableCell>
+        <TableCell>{{ task.description }}</TableCell>
+        <TableCell> {{ task.status }}</TableCell>
         <TableCell class="text-right">
           <Button type="submit" @click="onSubmit" size="sm"> Edit </Button>
         </TableCell>

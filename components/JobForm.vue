@@ -95,7 +95,7 @@ const headers = ref<Header[]>([
     <div>
       <Input type="text" placeholder="url" v-model="url" />
     </div>
-    <div>
+    <div> 
       <Select v-model="method">
         <SelectTrigger>
           <SelectValue placeholder="Http Method" />
